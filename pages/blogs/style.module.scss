@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 70% auto;
+  grid-column-gap: 16px;
+
+  @media screen and (max-width: 896px) {
+    grid-template-columns: 100%;
+  }
+}
+
+.side {
+  @media screen and (max-width: 896px) {
+    display: none;
+  }
+}

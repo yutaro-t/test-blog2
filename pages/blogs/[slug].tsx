@@ -2,6 +2,11 @@ import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import fs from 'fs';
 import path from 'path';
+import markdownStyles from './markdown.module.scss';
+import style from './style.module.scss';
+import { Contents } from '../../components/Contents';
+import { Header } from '../../components/Header';
+import { SideContainer } from '../../components/SideContainer';
 
 export interface Props {
   blog?: {
@@ -16,10 +21,15 @@ export interface Props {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
-  const { default: markdown } = await import(`../../content/blogs/${params.slug}.md`).catch(() => null);
+  const file = await import(`../../content/blogs/${params.slug}.md`).catch(() => null);
+  if(!file) return { props: { blog: null} };
+
   return {
     props: {
-      blog: markdown
+      blog: {
+        html: file.html,
+        ...file.attributes
+      }
     }
   }
 }
@@ -37,8 +47,20 @@ export const Blog: React.FC<Props> = ({ blog }) =>  {
   return (
     <>
       <article>
-        <h1>{blog.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: blog.html }} />
+        <Header title={blog.title} date={blog.date} category={blog.category} />
+        <Contents>
+          <div className={style.container}>
+            <div className={markdownStyles.markdown} dangerouslySetInnerHTML={{ __html: blog.html }} />
+            <div className={style.side}>
+              <SideContainer label="Popular">
+                foobar
+              </SideContainer>
+              <SideContainer label="New Blogs">
+                foobar
+              </SideContainer>
+            </div>
+          </div>
+        </Contents>
       </article>
     </>
     );

@@ -1,0 +1,133 @@
+.markdown{
+  line-height: 1.5em;
+  h1, h2 {
+    color: #102542;
+    border-top: solid 3px currentColor;
+    border-bottom: solid 3px currentColor;
+    padding: 16px 0;
+    font-size: 1.5em;
+    margin: 32px 0 16px;
+  }
+  
+  h3 {
+    padding: 8px;
+    font-size: 1.2rem;
+    background-color: #102542;
+    color: #ffffff;
+    border-radius: 4px;
+    margin: 32px 0 16px;
+    font-weight: bold;
+  }
+  
+  h4, h5, h6 {
+    font-weight: bold;
+    margin: 16px 0 8px;
+    &::before {
+      content: "■";
+      margin-right: 8px;
+      font-size: 0.8em;
+      color: #ED6A5A;
+    }
+  }
+  
+  h4 {
+    font-size: 1.1rem;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  
+  em {
+    font-style: italic;
+  }
+  
+  a {
+    color: #ED6A5A;
+  }
+  
+  p {
+    margin-bottom: 24px;
+  }
+  
+  ul, ol {
+    margin-bottom: 16px;
+    ul, ol {
+      margin-left: 16px;
+    }
+  }
+  
+  ul {
+    & li::before {
+      content: "■";
+      vertical-align: top;
+      margin-right: 8px;
+      font-size: 0.5em;
+      color: #ED6A5A;
+    }
+    ul {
+      & li::before {
+        content: "●";
+      }
+      ul {
+        & li::before {
+          content: "○";
+        }
+      }
+    }
+  }
+  ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+    ol {
+      list-style-type: upper-roman;
+      ol {
+        list-style-type: lower-alpha;
+      }
+    }
+  }
+  
+  table {
+    margin-bottom: 16px;
+    display: block;
+    th {
+      font-weight: 600;
+    }
+    th, td {
+      padding: 6px 13px;
+      border: 1px solid rgba(0,0,0,0.5);
+    }
+    tr:nth-child(2n) {
+      background-color: rgba(0,0,0,0.1);
+    }
+  }
+  code {
+    padding: .2em .4em;
+    margin: 0;
+    font-size: 0.8em;
+    background-color: rgba(27,31,35,.05);
+    border-radius: 3px;
+  }
+  pre {
+    display: block;
+    padding: 9.5px;
+    margin: 0 0 10px;
+    font-size: 0.8em;
+    line-height: 1.42857143;
+    color: #333;
+    word-break: break-all;
+    word-wrap: break-word;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    &>code {
+      padding: 0;
+      margin: 0;
+      font-size: 100%;
+      word-break: normal;
+      white-space: pre;
+      background: transparent;
+      border: 0;
+    }
+  }
+}
