@@ -1,6 +1,15 @@
-const withMDX = require('@next/mdx')({
-  extension: /\.mdx?$/,
-})
-module.exports = withMDX({
-  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
-})
+
+module.exports = {
+  webpack: (cfg) => {
+    cfg.module.rules.push(
+      {
+        test: /\.md$/,
+        loader: 'frontmatter-markdown-loader',
+      }
+    )
+    return cfg;
+  },
+  serverRuntimeConfig: {
+    PROJECT_ROOT: __dirname
+  }
+}
