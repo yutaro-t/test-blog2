@@ -2,8 +2,6 @@ import React from 'react';
 import { GetStaticProps, GetStaticPaths } from 'next';
 import fs from 'fs';
 import path from 'path';
-import getConfig from 'next/config';
-const { serverRuntimeConfig } = getConfig();
 
 export interface Props {
   blog?: {
@@ -20,13 +18,15 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   const { default: markdown } = await import(`../../content/blogs/${params.slug}.md`).catch(() => null);
   return {
-    props: markdown
+    props: {
+      blog: markdown
+    }
   }
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: fs.readdirSync(path.resolve(serverRuntimeConfig.PROJECT_ROOT, 'content/blogs'))
+    paths: fs.readdirSync(path.resolve(process.cwd(), 'content/blogs'))
       .map(filename => '/blogs/' + filename.split('.').slice(0, -1).join('.')),
     fallback: true
   }

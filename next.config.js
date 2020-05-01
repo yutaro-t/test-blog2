@@ -8,8 +8,5 @@ module.exports = {
       }
     )
     return cfg;
-  },
-  serverRuntimeConfig: {
-    PROJECT_ROOT: __dirname
   }
 }
