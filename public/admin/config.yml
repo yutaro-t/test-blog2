@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
   branch: master
+  repo: yutaro-t/test-blog2
 media_folder: public/img
 public_folder: img
 collections:
