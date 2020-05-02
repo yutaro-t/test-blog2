@@ -7,29 +7,31 @@ import style from './style.module.scss';
 import { Contents } from '../../components/Contents';
 import { Header } from '../../components/Header';
 import { SideContainer } from '../../components/SideContainer';
+import { Blog as BlogType } from '../../components/type';
+import { BlogChip } from '../../components/BlogChip';
+import Head from 'next/head';
+import { getNewestBlogs } from '../../components/utils';
 
 export interface Props {
-  blog?: {
-    html: string,
-    title: string,
-    category: string,
-    date: string,
-    description: string,
-    thumbnail: string
-  }
+  blog?: BlogType,
+  newBlogs?: BlogType[],
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
 
   const file = await import(`../../content/blogs/${params.slug}.md`).catch(() => null);
-  if(!file) return { props: { blog: null} };
+  
 
+  const others = await getNewestBlogs(5);
+  if(!file) return { props: { blog: undefined, newBlogs: undefined } };
+  
   return {
     props: {
       blog: {
         html: file.html,
         ...file.attributes
-      }
+      },
+      newBlogs: others
     }
   }
 }
@@ -42,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const Blog: React.FC<Props> = ({ blog }) =>  {
+export const Blog: React.FC<Props> = ({ blog, newBlogs }) =>  {
   if (!blog) return <div>not found</div>;
   return (
     <>
@@ -52,11 +54,8 @@ export const Blog: React.FC<Props> = ({ blog }) =>  {
           <div className={style.container}>
             <div className={markdownStyles.markdown} dangerouslySetInnerHTML={{ __html: blog.html }} />
             <div className={style.side}>
-              <SideContainer label="Popular">
-                foobar
-              </SideContainer>
               <SideContainer label="New Blogs">
-                foobar
+                {newBlogs.map(blog => <BlogChip key={blog.title} blog={blog}/>)}
               </SideContainer>
             </div>
           </div>

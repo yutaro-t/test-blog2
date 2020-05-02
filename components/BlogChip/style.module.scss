@@ -1,0 +1,46 @@
+.container {
+  display: block;
+  position: relative;
+  height: 144px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.img {
+  position: absolute;
+  object-fit: cover;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,0.7);
+  color: #ffffff;
+}
+
+.content {
+  position: relative;
+  top: 50%;
+  left: 16px;
+  transform: translateY(-50%);
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.category {
+  position: relative;
+  font-size: 0.8em;
+  margin-bottom: 8px;
+}

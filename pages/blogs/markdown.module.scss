@@ -22,16 +22,16 @@
   h4, h5, h6 {
     font-weight: bold;
     margin: 16px 0 8px;
+  }
+  
+  h4 {
+    font-size: 1.1rem;
     &::before {
       content: "■";
       margin-right: 8px;
       font-size: 0.8em;
       color: #ED6A5A;
     }
-  }
-  
-  h4 {
-    font-size: 1.1rem;
   }
   
   strong {
@@ -129,5 +129,11 @@
       background: transparent;
       border: 0;
     }
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    max-height: 720px;
+    margin: 0 auto;
   }
 }
