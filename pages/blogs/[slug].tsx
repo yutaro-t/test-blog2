@@ -9,7 +9,6 @@ import { Header } from '../../components/Header';
 import { SideContainer } from '../../components/SideContainer';
 import { Blog as BlogType } from '../../components/type';
 import { BlogChip } from '../../components/BlogChip';
-import Head from 'next/head';
 import { getNewestBlogs } from '../../components/utils';
 
 export interface Props {

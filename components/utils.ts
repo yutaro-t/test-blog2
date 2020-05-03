@@ -15,6 +15,13 @@ export async function getNewestBlogs(max: number): Promise<Blog[]> {
   return (await getAllBlogs()).slice(0, max);
 }
 
+export async function getCategoryBlogs(category: string, max: number): Promise<Blog[]> {
+  return (await getAllBlogs())
+    .filter(blog => blog.category === category)
+    .slice(0, max);
+}
+
+
 export async function getBlog(filename: string): Promise<Blog | null> {
   const file = await import(`../content/blogs/${filename}`).catch(() => null);
   if(file === null) return null;

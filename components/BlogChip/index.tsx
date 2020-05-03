@@ -2,6 +2,7 @@ import React from 'react';
 import style from './style.module.scss';
 import { Blog } from '../type';
 import Link from 'next/link';
+import { parseDate } from '../runtimeUtils';
 
 export interface Props {
   blog: Blog
@@ -15,7 +16,7 @@ export const BlogChip: React.FC<Props> = ({blog}) => {
         <div className={style.inner}>
           <div className={style.content}>
             <div className={style.title}>{blog.title}</div>
-            <div className={style.category}>{blog.date}</div>
+            <div className={style.category}>{parseDate(blog.date)}</div>
             <div className={style.category}>{blog.category}</div>
           </div>
         </div>
