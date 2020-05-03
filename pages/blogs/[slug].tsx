@@ -10,6 +10,7 @@ import { SideContainer } from '../../components/SideContainer';
 import { Blog as BlogType } from '../../components/type';
 import { BlogChip } from '../../components/BlogChip';
 import { getNewestBlogs } from '../../components/utils';
+import Head from 'next/head';
 
 export interface Props {
   blog?: BlogType,
@@ -47,6 +48,19 @@ export const Blog: React.FC<Props> = ({ blog, newBlogs }) =>  {
   if (!blog) return <div>not found</div>;
   return (
     <>
+
+      <Head>
+        <title>ブログタイトル - {blog.title}</title>
+        <meta name="description" content={blog.description} />
+        <meta property="og:url" content={`ページのURL/blogs/${blog.title}`} />
+        <meta property="og:title" content={`ブログタイトル - ${blog.title}`} />
+        <meta property="og:type" content="article" />
+        <meta property="og:description" content={blog.description} />
+        <meta property="og:image" content={blog.thumbnail} />
+        <meta name="twitter:card" content="summary" />
+        <meta property="og:site_name" content="ブログタイトル" />
+        <meta property="og:locale" content="ja_JP" />
+      </Head>
       <article>
         <Header title={blog.title} date={blog.date} category={blog.category} />
         <Contents>

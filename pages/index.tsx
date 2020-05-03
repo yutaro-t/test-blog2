@@ -25,7 +25,16 @@ export const Home: React.FC<Props> = ({ newBlogs }) =>  {
   return (
     <>
       <Head>
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+        <title>ブログタイトル - TOP</title>
+        <meta name="description" content="ブログタイトルのTOPページです" />
+        <meta property="og:url" content="ページのURL" />
+        <meta property="og:title" content="ブログタイトル - TOP" />
+        <meta property="og:type" content="website" />
+        <meta property="og:description" content="ブログタイトルのTOPページです" />
+        <meta property="og:image" content="画像のURL" />
+        <meta name="twitter:card" content="summary" />
+        <meta property="og:site_name" content="ブログタイトル" />
+        <meta property="og:locale" content="ja_JP" />
       </Head>
       <Contents>
         <article>
